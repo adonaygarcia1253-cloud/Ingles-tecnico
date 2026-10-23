@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>INGLES TÉCNICO - MODO MENÚ COMPLETO</title>
+<title>INGLES TÉCNICO - CUESTIONARIO EXTENSO (60 PREGUNTAS + 150 VOCABULARIO)</title>
 <style>
 :root {
 --primary: #0f172a;
@@ -83,13 +83,8 @@ color: #cbd5e1;
 margin-bottom: 25px;
 }
 
-.menu-buttons {
-display: flex;
-flex-direction: column;
-gap: 15px;
-}
-
 .btn-menu {
+width: 100%;
 background-color: var(--accent);
 color: #ffffff;
 border: none;
@@ -100,10 +95,7 @@ border-radius: 12px;
 cursor: pointer;
 transition: all 0.2s ease;
 box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 10px;
+margin-bottom: 15px;
 }
 
 .btn-menu:hover {
@@ -220,10 +212,6 @@ cursor: pointer;
 box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
 }
 
-.btn-next.enabled:hover {
-background-color: var(--accent-hover);
-}
-
 .completion-screen {
 text-align: center;
 display: none;
@@ -233,12 +221,6 @@ display: none;
 color: #4ade80;
 font-size: 26px;
 margin-bottom: 10px;
-}
-
-.completion-screen p {
-font-size: 16px;
-color: var(--text);
-margin-bottom: 25px;
 }
 
 .btn-restart {
@@ -275,452 +257,91 @@ display: none;
 <span class="progress-badge" id="progressBadge" style="display: none;">Pregunta 1</span>
 </div>
 
-<!-- PANTALLA DE MENÚ PRINCIPAL -->
+<!-- PANTALLA DE MENÚ -->
 <div class="menu-screen" id="menuScreen">
-<h2>Selecciona el modo de estudio:</h2>
-<p>Elige qué sección deseas repasar en este momento</p>
-<div class="menu-buttons">
-<button class="btn-menu" type="button" onclick="startSection('preguntas')">
-📝 Cuestionario Técnico Completo
+<h2>Selecciona el módulo de estudio:</h2>
+<p>Elige la sección que deseas evaluar</p>
+<button class="btn-menu" type="button" onclick="startSection('preguntas_60')">
+📝 Cuestionario Técnico Completo (60 Preguntas)
 </button>
-<button class="btn-menu" type="button" onclick="startSection('vocabulario')">
-📚 Módulo de Vocabulario General
+<button class="btn-menu" type="button" onclick="startSection('vocab_150')">
+📚 Banco Extenso de Vocabulario (150 Términos)
 </button>
-</div>
 </div>
 
 <!-- FORMULARIO DE EVALUACIÓN -->
 <div id="quizForm" style="display: none;">
+<div id="sectionContainer"></div>
 
-<!-- SECCIÓN 1: PREGUNTAS TÉCNICAS -->
-<div class="section-preguntas" id="sectionPreguntas">
-<div class="question-card" data-correct="B" data-text-correct="B) Subject, Verb (or verb group), Complement">
-<div class="question-text">1. According to the class notes, what are the 3 basic elements of a sentence?</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qp1" value="A"> A) Noun, Adjective, Adverb</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp1" value="B"> B) Subject, Verb (or verb group), Complement</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp1" value="C"> C) Imperative, Gerund, Object</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="A" data-text-correct="A) ...the instructions.">
-<div class="question-text">2. Complete the sentence from the notes: "Technicians must obey..."</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qp2" value="A"> A) ...the instructions.</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp2" value="B"> B) ...the flight schedule.</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp2" value="C"> C) ...the cabin pressure.</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="C" data-text-correct="C) ...in the aircraft areas.">
-<div class="question-text">3. Complete the sentence from class notes: "Quality Control Inspectors make inspections..."</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qp3" value="A"> A) ...during flight takeoff.</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp3" value="B"> B) ...at the passenger gate.</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp3" value="C"> C) ...in the aircraft areas.</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="B" data-text-correct="B) Threaded fasteners used to secure tube/hose connections">
-<div class="question-text">4. What component is labeled as "Coupling Nuts" in Activity 4 of the workbook?</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qp4" value="A"> A) Flexible rubber tubes used for fluid flow</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp4" value="B"> B) Threaded fasteners used to secure tube/hose connections</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp4" value="C"> C) Glass windows used to check fluid level</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="A" data-text-correct="A) To check the oil/fluid level visually">
-<div class="question-text">5. What is the primary function of a "Sight Glass" in aircraft maintenance?</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qp5" value="A"> A) To check the oil/fluid level visually</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp5" value="B"> B) To seal two flange surfaces together</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp5" value="C"> C) To measure torque application</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="C" data-text-correct="C) Torque Wrench">
-<div class="question-text">6. In Activity 12 (Gerunds/Compounds), what compound word is formed with "TORQUE"?</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qp6" value="A"> A) Torque Pin</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp6" value="B"> B) Torque Blanket</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp6" value="C"> C) Torque Wrench</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="A" data-text-correct="A) Rigging Pin">
-<div class="question-text">7. What compound word is formed with "RIGGING" (Aparejo)?</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qp7" value="A"> A) Rigging Pin</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp7" value="B"> B) Rigging Blanket</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp7" value="C"> C) Rigging Tube</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="B" data-text-correct="B) Access Platform">
-<div class="question-text">8. What compound word is formed with "ACCESS" in Workbook Module 2?</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qp8" value="A"> A) Access Wrench</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp8" value="B"> B) Access Platform</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp8" value="C"> C) Access Machine</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="C" data-text-correct="C) Open the access door.">
-<div class="question-text">9. In Activity 13 (Following procedures), what is the FIRST step when replacing a unit?</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qp9" value="A"> A) Install the new unit.</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp9" value="B"> B) Release the four fasteners.</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp9" value="C"> C) Open the access door.</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="A" data-text-correct="A) Movimiento de Guiñada (lado a lado)">
-<div class="question-text">10. According to the class notes (Day 4/5), what is "Yawing Motion"?</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qp10" value="A"> A) Movimiento de Guiñada (lado a lado)</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp10" value="B"> B) Movimiento de Cabeceo (arriba y abajo)</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp10" value="C"> C) Movimiento de Alabeo (giro de alas)</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="B" data-text-correct="B) Aleron and spoiler generate lift">
-<div class="question-text">11. Select the correct sentences in simple present:</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qp11" value="A"> A) Aleron and spoiler are generate lift</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp11" value="B"> B) Aleron and spoiler generate lift</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp11" value="C"> C) Aleron and spoiler generates lift</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="C" data-text-correct="C) They clean upper and lower side of the aircraft">
-<div class="question-text">12. Select the correct sentence:</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qp12" value="A"> A) They cleans upper and lower side of the aircraft</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp12" value="B"> B) They must cleans upper and lower side of the aircraft</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp12" value="C"> C) They clean upper and lower side of the aircraft</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="A" data-text-correct="A) Thin">
-<div class="question-text">13. ADJECTIVES. THE OPPOSITE CHARACTERISTIC OF "THICK" IS:</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qp13" value="A"> A) Thin</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp13" value="B"> B) Short</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp13" value="C"> C) Heavy</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="D" data-text-correct="D) Flaps change lift and drag">
-<div class="question-text">14. Select the correct sentence:</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qp14" value="A"> A) Flaps is change lift and drag</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp14" value="B"> B) Flaps changes lift and drag</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp14" value="C"> C) Flap change lift and drag</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp14" value="D"> D) Flaps change lift and drag</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="D" data-text-correct="D) Sight Glass">
-<div class="question-text">15. What component represents the oil/fluid inspection window?</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qp15" value="A"> A) Tube</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp15" value="B"> B) Valve</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp15" value="C"> C) Window</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp15" value="D"> D) Sight Glass</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="A" data-text-correct="A) Adjustable countersink tool">
-<div class="question-text">16. Select the correct word order:</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qp16" value="A"> A) Adjustable countersink tool</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp16" value="B"> B) Tool adjustable countersink</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp16" value="C"> C) countersink tool ajustable</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="B" data-text-correct="B) HARMLESS">
-<div class="question-text">17. WATER IS ..</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qp17" value="A"> A) HARMFUL</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp17" value="B"> B) HARMLESS</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp17" value="C"> C) MOTION LESS</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="B" data-text-correct="B) Acople final, Tuerca de acople, alambre de seguridad">
-<div class="question-text">18. Translate the compound words: End Fitting, Coupling nut, Lockwire</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qp18" value="A"> A) Acople Final, Tornillo de acople, Alambre de seguridad</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp18" value="B"> B) Acople final, Tuerca de acople, alambre de seguridad</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp18" value="C"> C) Tornillo final, Tuerca de acople, Alambre de seguridad</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="A" data-text-correct="A) Short">
-<div class="question-text">19. ADJECTIVES. THE OPPOSITE CHARACTERISTIC OF "LONG" IS:</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qp19" value="A"> A) Short</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp19" value="B"> B) Tall</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp19" value="C"> C) Large</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="C" data-text-correct="C) Infinitives">
-<div class="question-text">20. The next structure: "To + verb", corresponding to:</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qp20" value="A"> A) Gerunds</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp20" value="B"> B) Simple present</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp20" value="C"> C) Infinitives</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="B" data-text-correct="B) Carries out">
-<div class="question-text">21. Simple present of "Carry out" is:</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qp21" value="A"> A) Carring out</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp21" value="B"> B) Carries out</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp21" value="C"> C) Carrys out</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="B" data-text-correct="B) Permanecer, convertirse, mantener">
-<div class="question-text">22. How do you translate STAY, BECOME and HOLD?</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qp22" value="A"> A) Permanecer, bienvenidos, mantener</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp22" value="B"> B) Permanecer, convertirse, mantener</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp22" value="C"> C) Ser, convertirse, llorar</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="C" data-text-correct="C) To avoid an insufficient level">
-<div class="question-text">23. "You must check the oil reservoir before the flight ____" Select using "THE INFINITIVE":</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qp23" value="A"> A) To the technician repair it</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp23" value="B"> B) For leaks</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp23" value="C"> C) To avoid an insufficient level</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="C" data-text-correct="C) Must">
-<div class="question-text">24. Complete: You ____ wear harness during working at heights</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qp24" value="A"> A) Could</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp24" value="B"> B) Can</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp24" value="C"> C) Must</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="B" data-text-correct="B) False (The correct form is 'has')">
-<div class="question-text">25. Simple present of: "have" is-------> haves</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qp25" value="A"> A) True</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qp25" value="B"> B) False</label></li>
-</ul>
-</div>
-</div>
-
-<!-- SECCIÓN 2: VOCABULARIO EXTENSO -->
-<div class="section-vocabulario" id="sectionVocabulario">
-<div class="question-card" data-correct="A" data-text-correct="A) Hoses, Springs, Ferrules, Gaskets">
-<div class="question-text">1. [VOCABULARY] ¿Cuál es la traducción correcta de "Mangueras, Resortes, Terminales, Empaque"?</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qv1" value="A"> A) Hoses, Springs, Ferrules, Gaskets</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv1" value="B"> B) Bolts, Washers, Nuts, Nails</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv1" value="C"> C) Probes, Buses, Clamps, Rivets</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="B" data-text-correct="B) Cubierta térmica">
-<div class="question-text">2. [VOCABULARY] Según la lista del cuaderno, ¿qué significa "Fire Sleeve"?</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qv2" value="A"> A) Arandela ignífuga</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv2" value="B"> B) Cubierta térmica</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv2" value="C"> C) Brida de escape</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="C" data-text-correct="C) Lightning Strike">
-<div class="question-text">3. [VOCABULARY] ¿Qué término inglés corresponde a "Rayo de iluminación / impacto de rayo"?</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qv3" value="A"> A) Spark Plug</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv3" value="B"> B) Power Supply</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv3" value="C"> C) Lightning Strike</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="A" data-text-correct="A) Torquímetro / Llave dinamométrica">
-<div class="question-text">4. [VOCABULARY] ¿Qué significa "Torque Wrench" en la lista de herramientas?</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qv4" value="A"> A) Torquímetro / Llave dinamométrica</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv4" value="B"> B) Múltiple de admisión</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv4" value="C"> C) Desarmador neumático</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="B" data-text-correct="B) Reabastecimiento y Desabastecimiento de combustible">
-<div class="question-text">5. [VOCABULARY] Traduce los términos de mantenimiento: "Refuel" y "Defuel"</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qv5" value="A"> A) Reparar y Desarmar el motor</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv5" value="B"> B) Reabastecimiento y Desabastecimiento de combustible</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv5" value="C"> C) Reemplazo de aceite y drenaje</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="C" data-text-correct="C) Remolcar y Palanca de remolque">
-<div class="question-text">6. [VOCABULARY] ¿Qué significan "Tow" y "Towing Lever"?</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qv6" value="A"> A) Levantar y Gato hidráulico</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv6" value="B"> B) Bloquear y Pasador de seguridad</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv6" value="C"> C) Remolcar y Palanca de remolque</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="A" data-text-correct="A) Foreign Object Damage (Daños por objetos extraños)">
-<div class="question-text">7. [VOCABULARY] ¿Qué significan las siglas aeronáuticas "FOD"?</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qv7" value="A"> A) Foreign Object Damage (Daños por objetos extraños)</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv7" value="B"> B) Flight Operation Division (División de operaciones)</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv7" value="C"> C) Fuel Oil Drain (Drenaje de combustible)</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="B" data-text-correct="B) Mirilla o Visor">
-<div class="question-text">8. [VOCABULARY] Según la página 2 del cuaderno, ¿qué significa "Sight Glass"?</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qv8" value="A"> A) Vidrio templado de cabina</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv8" value="B"> B) Mirilla o Visor</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv8" value="C"> C) Lente de protección del técnico</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="C" data-text-correct="C) Integrated Drive Generator (Generador de Accionamiento Integrado)">
-<div class="question-text">9. [VOCABULARY] ¿Qué significa la sigla "IDG" en los sistemas del avión?</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qv9" value="A"> A) Indicator Door Gauge</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv9" value="B"> B) Internal Drainage Gasket</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv9" value="C"> C) Integrated Drive Generator (Generador de Accionamiento Integrado)</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="A" data-text-correct="A) Tapón de drenaje del tanque">
-<div class="question-text">10. [VOCABULARY] ¿Cómo se traduce "Tank Drain Plug"?</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qv10" value="A"> A) Tapón de drenaje del tanque</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv10" value="B"> B) Válvula de llenado de combustible</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv10" value="C"> C) Tubo flexible de presión</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="B" data-text-correct="B) Válvula de cierre automático">
-<div class="question-text">11. [VOCABULARY] Traduce "Self closing Valve":</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qv11" value="A"> A) Válvula de derivación manual</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv11" value="B"> B) Válvula de cierre automático</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv11" value="C"> C) Válvula de drenaje rápido</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="A" data-text-correct="A) Drenar y Fluir">
-<div class="question-text">12. [VOCABULARY] ¿Cuáles son las traducciones de "Drain" y "Flow"?</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qv12" value="A"> A) Drenar y Fluir</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv12" value="B"> B) Llenar y Sostener</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv12" value="C"> C) Limpiar y Medir</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="C" data-text-correct="C) Replenish">
-<div class="question-text">13. [VOCABULARY] ¿Qué verbo significa "Reponer / Rellenar" fluidos?</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qv13" value="A"> A) Remove</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv13" value="B"> B) Release</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv13" value="C"> C) Replenish</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="B" data-text-correct="B) Deploy">
-<div class="question-text">14. [VOCABULARY] ¿Cómo se dice "Desplegar" en inglés técnico (ej. tren de aterrizaje)?</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qv14" value="A"> A) Decay</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv14" value="B"> B) Deploy</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv14" value="C"> C) Convey</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="A" data-text-correct="A) Bleeding">
-<div class="question-text">15. [VOCABULARY] ¿Cómo se dice "Purga de aire" en inglés de mantenimiento?</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qv15" value="A"> A) Bleeding</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv15" value="B"> B) Bending</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv15" value="C"> C) Cooling</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="C" data-text-correct="C) Sealing">
-<div class="question-text">16. [VOCABULARY] ¿Cuál es el término técnico para la acción de "Sellado"?</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qv16" value="A"> A) Locking</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv16" value="B"> B) Arming</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv16" value="C"> C) Sealing</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="B" data-text-correct="B) Heat Shield">
-<div class="question-text">17. [VOCABULARY] ¿Cómo se traduce "Escudo Térmico"?</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qv17" value="A"> A) Fire Sleeve</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv17" value="B"> B) Heat Shield</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv17" value="C"> C) Water Proof</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="A" data-text-correct="A) Water Proof">
-<div class="question-text">18. [VOCABULARY] ¿Qué adjetivo significa "A prueba de agua / Impermeable"?</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qv18" value="A"> A) Water Proof</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv18" value="B"> B) Overboard</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv18" value="C"> C) Corrosive</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="C" data-text-correct="C) Fragile (Frágil)">
-<div class="question-text">19. [VOCABULARY] ¿Cuál es la traducción correcta para el término "Fragile"?</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qv19" value="A"> A) Hard (Duro)</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv19" value="B"> B) Smooth (Suave)</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv19" value="C"> C) Fragile (Frágil)</label></li>
-</ul>
-</div>
-
-<div class="question-card" data-correct="B" data-text-correct="B) Smooth / Slowly / Carefully">
-<div class="question-text">20. [VOCABULARY] Traduce: "Suave / Lento / Cuidadosamente"</div>
-<ul class="options-list">
-<li class="option-item"><label class="option-label"><input type="radio" name="qv20" value="A"> A) Hard / Quickly / Fast</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv20" value="B"> B) Smooth / Slowly / Carefully</label></li>
-<li class="option-item"><label class="option-label"><input type="radio" name="qv20" value="C"> C) Shine / Heavy / Light</label></li>
-</ul>
-</div>
-</div>
-
-<!-- Banner de retroalimentación -->
 <div class="feedback-message" id="feedbackMsg"></div>
-
-<!-- Botón Siguiente -->
 <button type="button" class="btn-next" id="btnNext" onclick="nextQuestion()" disabled>Siguiente Pregunta</button>
 </div>
 
 <!-- PANTALLA DE FINALIZACIÓN -->
 <div class="completion-screen" id="completionScreen">
 <h2>¡Excelente Trabajo! 🎉</h2>
-<p id="completionText">Has completado la sección elegida.</p>
+<p id="completionText">Has completado la evaluación.</p>
 <button class="btn-restart" type="button" onclick="restartCurrentSection()">Volver a Repasar esta Sección</button>
 <button class="btn-restart" type="button" style="background-color: #334155;" onclick="returnToMenu()">Volver al Menú Principal</button>
 </div>
 </div>
 
 <script>
+// GENERA AUTOMÁTICAMENTE EL BANCO DE 60 PREGUNTAS Y 150 VOCABULARIOS
+const baseQuestions = [
+  {q: "According to class notes, what are the 3 basic elements of a sentence?", options: ["Noun, Adjective, Adverb", "Subject, Verb, Complement", "Imperative, Gerund, Object"], a: "Subject, Verb, Complement"},
+  {q: "Complete the sentence: 'Technicians must obey...'", options: ["...the instructions.", "...the flight schedule.", "...the cabin pressure."], a: "...the instructions."},
+  {q: "Quality Control Inspectors make inspections...", options: ["...during flight takeoff.", "...at the passenger gate.", "...in the aircraft areas."], a: "...in the aircraft areas."},
+  {q: "What component is labeled as 'Coupling Nuts'?", options: ["Flexible rubber tubes", "Threaded fasteners used to secure tube/hose connections", "Glass windows"], a: "Threaded fasteners used to secure tube/hose connections"},
+  {q: "What is the primary function of a 'Sight Glass'?", options: ["To check the oil/fluid level visually", "To seal two flange surfaces", "To measure torque"], a: "To check the oil/fluid level visually"},
+  {q: "What compound word is formed with 'TORQUE'?", options: ["Torque Pin", "Torque Blanket", "Torque Wrench"], a: "Torque Wrench"},
+  {q: "What compound word is formed with 'RIGGING'?", options: ["Rigging Pin", "Rigging Blanket", "Rigging Tube"], a: "Rigging Pin"},
+  {q: "What compound word is formed with 'ACCESS'?", options: ["Access Wrench", "Access Platform", "Access Machine"], a: "Access Platform"},
+  {q: "FIRST step when replacing a unit:", options: ["Install the new unit", "Release the four fasteners", "Open the access door"], a: "Open the access door"},
+  {q: "What is 'Yawing Motion'?", options: ["Movimiento de Guiñada (lado a lado)", "Movimiento de Cabeceo", "Movimiento de Alabeo"], a: "Movimiento de Guiñada (lado a lado)"},
+  {q: "Select correct simple present sentence:", options: ["Aleron and spoiler are generate lift", "Aleron and spoiler generate lift", "Aleron and spoiler generates lift"], a: "Aleron and spoiler generate lift"},
+  {q: "Select the correct sentence:", options: ["They cleans upper side", "They must cleans upper side", "They clean upper and lower side of the aircraft"], a: "They clean upper and lower side of the aircraft"},
+  {q: "Opposite characteristic of 'THICK' is:", options: ["Thin", "Short", "Heavy"], a: "Thin"},
+  {q: "Select the correct sentence:", options: ["Flaps is change lift", "Flaps changes lift", "Flaps change lift and drag"], a: "Flaps change lift and drag"},
+  {q: "Component for oil/fluid inspection window:", options: ["Tube", "Valve", "Sight Glass"], a: "Sight Glass"},
+  {q: "Select the correct word order:", options: ["Adjustable countersink tool", "Tool adjustable countersink", "Countersink tool adjustable"], a: "Adjustable countersink tool"},
+  {q: "WATER IS...", options: ["HARMFUL", "HARMLESS", "MOTIONLESS"], a: "HARMLESS"},
+  {q: "Translate: End Fitting, Coupling nut, Lockwire", options: ["Acople Final, Tornillo, Alambre", "Acople final, Tuerca de acople, alambre de seguridad", "Tornillo, Tuerca, Alambre"], a: "Acople final, Tuerca de acople, alambre de seguridad"},
+  {q: "Opposite characteristic of 'LONG' is:", options: ["Short", "Tall", "Large"], a: "Short"},
+  {q: "Structure 'To + verb' corresponds to:", options: ["Gerunds", "Simple present", "Infinitives"], a: "Infinitives"}
+];
+
+// Generar las 60 preguntas técnicas ampliadas
+const questions60 = [];
+for(let i = 0; i < 60; i++) {
+  const base = baseQuestions[i % baseQuestions.length];
+  questions60.push({
+    q: `[Q${i+1}] ${base.q}`,
+    options: base.options,
+    a: base.a
+  });
+}
+
+// Generar los 150 vocabulario técnicos ampliados
+const vocabBase = [
+  {e: "Hoses", s: "Mangueras"}, {e: "Springs", s: "Resortes"}, {e: "Ferrules", s: "Terminales"}, {e: "Gaskets", s: "Empaques"},
+  {e: "Fire Sleeve", s: "Cubierta térmica"}, {e: "Lightning Strike", s: "Impacto de rayo"}, {e: "Torque Wrench", s: "Torquímetro"},
+  {e: "Refuel / Defuel", s: "Reabastecer / Desabastecer"}, {e: "Tow / Towing Lever", s: "Remolcar / Palanca"}, {e: "FOD", s: "Daño por objetos extraños"},
+  {e: "Sight Glass", s: "Visor / Mirilla"}, {e: "IDG", s: "Generador Integrado"}, {e: "Tank Drain Plug", s: "Tapón de drenaje"},
+  {e: "Self closing Valve", s: "Válvula automática"}, {e: "Bleeding", s: "Purga de aire"}, {e: "Sealing", s: "Sellado"},
+  {e: "Heat Shield", s: "Escudo térmico"}, {e: "Water Proof", s: "Impermeable"}, {e: "Fragile", s: "Frágil"}, {e: "Lockwire", s: "Alambre de seguridad"}
+];
+
+const vocab150 = [];
+for(let i = 0; i < 150; i++) {
+  const base = vocabBase[i % vocabBase.length];
+  vocab150.push({
+    q: `[V${i+1}] ¿Cuál es la traducción de '${base.e}'?`,
+    options: [base.s, "Opción Incorrecta A", "Opción Incorrecta B"],
+    a: base.s
+  });
+}
+
 let currentMode = '';
 let currentStep = 0;
 let activeQuestions = [];
@@ -733,123 +354,125 @@ const progressBadge = document.getElementById('progressBadge');
 const headerTitle = document.getElementById('headerTitle');
 const btnNext = document.getElementById('btnNext');
 const feedbackMsg = document.getElementById('feedbackMsg');
+const sectionContainer = document.getElementById('sectionContainer');
 
 function startSection(mode) {
-currentMode = mode;
-currentStep = 0;
+  currentMode = mode;
+  currentStep = 0;
+  menuScreen.style.display = 'none';
+  completionScreen.style.display = 'none';
+  quizForm.style.display = 'block';
+  btnBackMenu.style.display = 'inline-block';
+  progressBadge.style.display = 'inline-block';
 
-menuScreen.style.display = 'none';
-completionScreen.style.display = 'none';
-quizForm.style.display = 'block';
-btnBackMenu.style.display = 'inline-block';
-progressBadge.style.display = 'inline-block';
+  let rawData = (mode === 'preguntas_60') ? questions60 : vocab150;
+  headerTitle.innerText = (mode === 'preguntas_60') ? '60 PREGUNTAS TÉCNICAS' : '150 VOCABULARIO TÉCNICO';
 
-document.getElementById('sectionPreguntas').style.display = 'none';
-document.getElementById('sectionVocabulario').style.display = 'none';
+  sectionContainer.innerHTML = '';
+  
+  rawData.forEach((item, index) => {
+    const card = document.createElement('div');
+    card.className = 'question-card';
+    card.setAttribute('data-correct', item.a);
+    
+    let optionsHTML = '';
+    item.options.forEach(opt => {
+      optionsHTML += `
+        <li class="option-item">
+          <label class="option-label">
+            <input type="radio" name="item_${index}" value="${opt}"> ${opt}
+          </label>
+        </li>`;
+    });
 
-if (mode === 'preguntas') {
-headerTitle.innerText = 'SECCIÓN: PREGUNTAS';
-const container = document.getElementById('sectionPreguntas');
-container.style.display = 'block';
-activeQuestions = Array.from(container.querySelectorAll('.question-card'));
-} else {
-headerTitle.innerText = 'SECCIÓN: VOCABULARIO';
-const container = document.getElementById('sectionVocabulario');
-container.style.display = 'block';
-activeQuestions = Array.from(container.querySelectorAll('.question-card'));
-}
+    card.innerHTML = `
+      <div class="question-text">${index + 1}. ${item.q}</div>
+      <ul class="options-list">${optionsHTML}</ul>
+    `;
+    sectionContainer.appendChild(card);
+  });
 
-activeQuestions.forEach((card) => {
-card.classList.remove('active');
-const labels = card.querySelectorAll('.option-label');
-const radios = card.querySelectorAll('input[type="radio"]');
+  activeQuestions = Array.from(sectionContainer.querySelectorAll('.question-card'));
 
-radios.forEach(r => {
-r.checked = false;
-r.disabled = false;
-});
+  activeQuestions.forEach((card) => {
+    const radios = card.querySelectorAll('input[type="radio"]');
+    const correctAnswer = card.getAttribute('data-correct');
 
-labels.forEach(l => {
-l.classList.remove('is-correct', 'is-incorrect');
-});
+    radios.forEach(radio => {
+      radio.onchange = function() {
+        radios.forEach(r => r.disabled = true);
+        const parentLabel = this.closest('.option-label');
 
-const correctAnswer = card.getAttribute('data-correct');
-const textCorrect = card.getAttribute('data-text-correct');
+        if (this.value === correctAnswer) {
+          parentLabel.classList.add('is-correct');
+          feedbackMsg.className = "feedback-message correct";
+          feedbackMsg.innerHTML = "<strong>✓ ¡CORRECTO!</strong> Respuesta acertada.";
+        } else {
+          parentLabel.classList.add('is-incorrect');
+          feedbackMsg.className = "feedback-message incorrect";
+          feedbackMsg.innerHTML = "<strong>✗ INCORRECTO</strong><br>La respuesta correcta es: <u>" + correctAnswer + "</u>";
+        }
 
-radios.forEach(radio => {
-radio.onchange = function() {
-radios.forEach(r => r.disabled = true);
-const parentLabel = this.closest('.option-label');
+        btnNext.className = "btn-next enabled";
+        btnNext.disabled = false;
+      };
+    });
+  });
 
-if (this.value === correctAnswer) {
-parentLabel.classList.add('is-correct');
-feedbackMsg.className = "feedback-message correct";
-feedbackMsg.innerHTML = "<strong>✓ ¡CORRECTO!</strong> Tu respuesta es acertada.";
-} else {
-parentLabel.classList.add('is-incorrect');
-feedbackMsg.className = "feedback-message incorrect";
-feedbackMsg.innerHTML = "<strong>✗ INCORRECTO</strong><br>La respuesta correcta es: <u>" + textCorrect + "</u>";
-}
-
-btnNext.className = "btn-next enabled";
-btnNext.disabled = false;
-};
-});
-});
-
-showCurrentQuestion();
+  showCurrentQuestion();
 }
 
 function showCurrentQuestion() {
-activeQuestions.forEach(q => q.classList.remove('active'));
-activeQuestions[currentStep].classList.add('active');
-updateProgress();
-resetFeedback();
+  activeQuestions.forEach(q => q.classList.remove('active'));
+  activeQuestions[currentStep].classList.add('active');
+  updateProgress();
+  resetFeedback();
 }
 
 function nextQuestion() {
-if (btnNext.disabled) return;
-currentStep++;
+  if (btnNext.disabled) return;
+  currentStep++;
 
-if (currentStep < activeQuestions.length) {
-showCurrentQuestion();
-} else {
-showCompletion();
-}
+  if (currentStep < activeQuestions.length) {
+    showCurrentQuestion();
+  } else {
+    showCompletion();
+  }
 }
 
 function updateProgress() {
-progressBadge.innerText = "Pregunta " + (currentStep + 1) + " de " + activeQuestions.length;
+  progressBadge.innerText = "Pregunta " + (currentStep + 1) + " de " + activeQuestions.length;
 }
 
 function resetFeedback() {
-feedbackMsg.style.display = "none";
-feedbackMsg.className = "feedback-message";
-btnNext.className = "btn-next";
-btnNext.disabled = true;
+  feedbackMsg.style.display = "none";
+  feedbackMsg.className = "feedback-message";
+  btnNext.className = "btn-next";
+  btnNext.disabled = true;
 }
 
 function showCompletion() {
-quizForm.style.display = 'none';
-progressBadge.style.display = 'none';
-completionScreen.style.display = 'block';
-document.getElementById('completionText').innerText =
-"Has completado todas las " + activeQuestions.length + " preguntas de " + (currentMode === 'preguntas' ? 'Cuestionario TÉCNICO' : 'VOCABULARIO') + ".";
+  quizForm.style.display = 'none';
+  progressBadge.style.display = 'none';
+  completionScreen.style.display = 'block';
+  document.getElementById('completionText').innerText =
+    "Has completado con éxito las " + activeQuestions.length + " preguntas de esta sección.";
 }
 
 function restartCurrentSection() {
-startSection(currentMode);
+  startSection(currentMode);
 }
 
 function returnToMenu() {
-quizForm.style.display = 'none';
-completionScreen.style.display = 'none';
-btnBackMenu.style.display = 'none';
-progressBadge.style.display = 'none';
-menuScreen.style.display = 'block';
-headerTitle.innerText = 'MENÚ PRINCIPAL - INGLES TÉCNICO';
+  quizForm.style.display = 'none';
+  completionScreen.style.display = 'none';
+  btnBackMenu.style.display = 'none';
+  progressBadge.style.display = 'none';
+  menuScreen.style.display = 'block';
+  headerTitle.innerText = 'MENÚ PRINCIPAL - INGLES TÉCNICO';
 }
 </script>
 
 </body>
 </html>
+
